@@ -115,6 +115,7 @@ public class ControladorInicio {
             attribute.addFlashAttribute("error", "Error: Libro no existente o erróneo");
         return "redirect:/";
     }
+    
 
     @GetMapping("/estadolibro/{id_libro}")
     public String estadolibro(Libro libro,RedirectAttributes attribute) {
@@ -129,6 +130,8 @@ public class ControladorInicio {
         return "redirect:/";
     }
 
+     /* Dar de alta a los libros desactivados */
+    
     @GetMapping("/estadolibro2/{id_libro}")
     public String estadolibro2(Libro libro,Model model,RedirectAttributes attribute) {
         libro = libroservice.BuscarLibro(libro);
@@ -235,8 +238,7 @@ public class ControladorInicio {
         
         else if(!autorsv.EliminarAutor(autor))
             attribute.addFlashAttribute("error", "ERROR: No se pudo eliminar el autor porque está en un libro existente");
-              
-
+             
         else
            attribute.addFlashAttribute("success", "El autor fue eliminado correctamente!");             
 
