@@ -1,5 +1,6 @@
 package web.egg.entidades;
 
+
 import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
