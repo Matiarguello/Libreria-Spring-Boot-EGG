@@ -1,0 +1,77 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+   
+
+    <head th:replace="layout/header :: head">
+        <title>Libros dados de baja</title>
+    </head>
+
+    <body style="color: rgb(233, 236, 240);background-color:rgb(44, 46, 49);margin: 4%;">
+        <!-- style="background-color:rgb(44, 46, 49);" -->
+        <header th:replace="layout/header :: navbar"></header>
+
+        <!-- Base de datos vacía -->
+        <div th:if="${new_libros == null or new_libros.empty}">
+            <h2 align="center" style="margin-left:3%;color: rgb(233, 236, 240);"><img src="https://i.imgur.com/veJycV7.png" style="width:100px;height:80px;margin-left: -10%;" > No hay libros desactivados :) </h2 >
+            <br>
+            <div align="center" style="margin-top: 4%;">
+                <a th:href="@{/}"> <button type="button" class="btn btn-success btn-lg">
+                    <div> Volver</div>
+                    </button></a>
+            </div>
+        </div>
+
+        
+        <!----------------- [ Lista de Libros desactivados ]----------------->
+        <div th:if="${new_libros != null and !new_libros.empty}">
+
+            <!-- Imagen de portada -->
+            <h2 align="center" style="margin-left:3%;"><img src="https://i.imgur.com/veJycV7.png" style="width:100px;height:80px;margin-left: -10%;" > Libros Disponibles </h2 >
+                <br>
+                
+            <table class="table table-dark table-hover"  cellspacing = "2" cellpadding = "2" align="center" style="color: rgb(233, 236, 240);">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th align="center" scope="col">Titulo </th>
+                    <th scope="col">Año</h>
+                    <th scope="col">Ejemplares</h>    
+                    <th scope="col">Prestados</h>     
+                    <th scope="col">Restantes</h>      
+                    <th scope="col">ISBN</h>                          
+                    <th scope="col">Estado</h>                          
+                    <th scope="col">Autor</h>                          
+                    <th scope="col">Editorial</h>                          
+                    <th scope="col">Editar</h>                          
+                    <th scope="col">Eliminar</h>                                             
+                </tr>
+                
+                <tr th:each="libro : ${new_libros}"> 
+                    <td th:text="${libro.id_libro}" width = "80">Mostrar id</td>
+                    <td th:text="${libro.titulo}">Mostrar Nombre</td>
+                    <td th:text="${libro.year}" width = "70">Mostrar Año</td>
+                    <td th:text="${libro.ejemplares}" width = "60">Mostrar Ejemplares Disponibles</td>
+                    <td th:text="${libro.prestados}" width = "60">Mostrar Ejemplares Prestados</td>                   
+                    <td th:text="${libro.restantes}" width = "60">Mostrar Ejemplares Restantes</td>                                     
+                    <td th:text="${libro.isbn}" width = "50">Mostrar ISBN</td>  
+
+                    <td width = "120"><a th:href="@{/estadolibro2/} + ${libro.id_libro}">
+                        <span th:if="${libro.alta == true}">
+                            <button type="button" class="btn btn-outline-danger btn-sm">Dar de baja</button>
+                        </span>
+                        <span th:unless="${libro.alta}">
+                            <button type="button" class="btn btn-outline-success btn-sm">Dar de alta</button>
+                        </span>                       
+                        </a>
+                    </td>  
+
+                    <td th:text="${libro.autor?.nombre_autor}">Mostrar Autor</td>   
+                    <td th:text="${libro.editorial?.nombre_editorial}">Mostrar Editorial</td>   
+                    <td width = "60"><a th:href="@{/editar/} + ${libro.id_libro} "><button type="button" class="btn btn-outline-success btn-sm">Editar</button></a></td>               
+                    <td width = "60"><a th:href="@{/eliminar/} + ${libro.id_libro}"><button type="button" class="btn btn-outline-danger btn-sm">Eliminar</button></a></td>
+                </tr>
+            </table>
+        </div>
+
+    </body>
+</html>

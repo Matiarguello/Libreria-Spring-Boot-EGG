@@ -1,0 +1,19 @@
+<!DOCTYPE html> 
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+   
+
+    <body>
+        <section th:fragment="Mensajes">
+            <div class="alert alert-success alert-dismissable" th:if="${success != null}" id="notificacion" align="center">
+                <img src="https://i.imgur.com/QjiQJrY.png"> <label th:text="${success}"></label>
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+            <div class="alert alert-danger alert-dismissable" th:if="${error != null}" id="notificacion" align="center">
+               <img src="https://i.imgur.com/dqb18X7.png"> <label th:text="${error}"></label>
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+            <br>
+        </section>
+    </body>
+</html>

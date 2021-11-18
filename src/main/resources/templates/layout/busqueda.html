@@ -1,0 +1,97 @@
+<!DOCTYPE html> 
+
+<html xmlns:th="http://www.thymeleaf.org">
+   
+    <body>
+        <section th:fragment="BusquedaService">
+
+            <div th:if="${libros != null and !libros.empty}">
+
+                <!-- TITULO BUSQUEDA -->
+                <h2 align="center" style="margin-left:3%;"><img src="https://i.imgur.com/9p53YCA.png" style="width:95px;height:80px;margin-left: -10%;" > Buscar libro</h2>
+                <br>
+    
+                <!-- Buscar un libro por su ID  -->
+                <form th:action="@{/buscarporid}" method="get" class="form-label" >
+                        <table cellspacing = "2" cellpadding = "2" align="center">
+                        <tr>
+                            <td width = "160">Buscar por ID:</td>
+                            <td width = "120" ><input type="text" name="keyword" placeholder="      Ingrese el ID" ></td>
+                            <td width = "120" align="center"><button class="btn btn-primary" type="submit" ><span class="fas fa-search"></span>  Buscar</button></td>
+                            <!-- <span th:if="keyword == null or keyword.empty"> <img src="https://i.imgur.com/s8iUKrK.png"> <strong>Título del libro está vacío</strong><br></span> validación de errores -->
+                        </tr>
+                    </table>
+                </form>
+                
+                <!-- Buscar un libro por su Nombre  -->
+                <form th:action="@{/buscarpornombre}" method="get" class="form-label">
+                    <table cellspacing = "2" cellpadding = "2" align="center">
+                        <tr>
+                            <td width = "160"><span class ="fa-solid fa-arrow-up-z-a"></span>  Buscar por Nombre:</td>
+                            <td width = "120" ><input type="text" name="szname" placeholder="      Ingrese el Nombre"></td>
+                            <td width = "120" align="center"><button class="btn btn-primary" type="submit"><span class="fas fa-search"></span>  Buscar</button></td>
+                        </tr>
+                    </table>
+                </form>
+                
+                <!-- Buscar un libro por su Autor  -->
+                <form th:action="@{/buscarporautor}" method="get" class="form-label">
+                    <table cellspacing = "2" cellpadding = "2" align="center">
+                        <tr>
+                            <td width = "160">Buscar por Autor:</td>
+                            <td width = "120" ><input type="text" name="szname" placeholder="      Ingrese el Autor"></td>
+                            <td width = "120" align="center"><button class="btn btn-primary" type="submit"><span class="fas fa-search"></span>  Buscar</button></td>
+                        </tr>
+                    </table>
+                </form><br><br>
+                
+    
+    
+                <!-- Tabla de libros de la busqueda-->
+    
+                <div th:if="${searchbooks != 0}">
+        
+                        <div th:if="${busqueda != null and !busqueda.empty}">
+                            <table class="table table-dark table-hover"  border "2" cellspacing = "2" cellpadding = "2" align="center" style="color: rgb(233, 236, 240);">
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th align="center" scope="col">Titulo </th>
+                                    <th scope="col">Año</h>
+                                    <th scope="col">Ejemplares</h>    
+                                    <th scope="col">Prestados</h>     
+                                    <th scope="col">Restantes</h>      
+                                    <th scope="col">ISBN</h>                          
+                                    <th scope="col">Autor</h>                          
+                                    <th scope="col">Editorial</h>                          
+                                    <th scope="col">Editar</h>                          
+                                    <th scope="col">Eliminar</h>                          
+                                </tr>
+                                
+                                <tr th:each="libro : ${busqueda}">
+                                    <td th:text="${libro.id_libro}" width = "80">Mostrar id</td>
+                                    <td th:text="${libro.year}" width = "70">Mostrar Año</td>
+                                    <td th:text="${libro.ejemplares}" width = "60">Mostrar Ejemplares Disponibles</td>
+                                    <td th:text="${libro.prestados}" width = "60">Mostrar Ejemplares Prestados</td>                   
+                                    <td th:text="${libro.restantes}" width = "60">Mostrar Ejemplares Restantes</td>                    
+                                    <td th:text="${libro.isbn}">Mostrar ISBN</td>                                       <td th:text="${libro.titulo}">
+                                    <td th:text="${libro.autor?.nombre_autor}">Mostrar Autor</td>   
+                                    <td th:text="${libro.editorial?.nombre_editorial}">Mostrar Editorial</td>   
+                                    <td width = "60"><a th:href="@{/editar/} + ${libro.id_libro} "><button type="button" class="btn btn-outline-success btn-sm">Editar</button></a></td>               
+                                    <td width = "60"><a th:href="@{/eliminar/} + ${libro.id_libro}"><button type="button" class="btn btn-outline-danger btn-sm">Eliminar</button></a></td>
+                                </tr>
+                            </table>
+                        </div>
+    
+                        <div th:if="${busqueda == null or busqueda.empty}">
+                            <div align="center">
+                                <img src="https://i.imgur.com/un6knbK.png" alt="No se encontraron resultados">
+                            </div>
+                        </div>
+                </div>
+    
+                
+            </div>  <!-- Fin de la tabla de libros -->
+        
+        </section>
+    </body>
+</html>

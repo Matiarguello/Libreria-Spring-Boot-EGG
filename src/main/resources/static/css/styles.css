@@ -1,0 +1,140 @@
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  color: rgb(233, 236, 240);
+  background-color:rgb(44, 46, 49);
+  margin: 4%;
+}
+
+
+.myButton {
+	background-color:#2c9478;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#fcfffe;
+	font-family:Arial;
+	font-size:13px;
+	padding:11px 11px;
+
+}
+.myButton:hover {
+	background-color:#27826a;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+
+/* Animacià¸£à¸“n del boton agregar */
+
+#agregarbutton:hover{
+animation: myAnim 2s linear 0s infinite normal forwards;
+}
+
+
+@keyframes myAnim {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70% {
+    transform: translateY(-8px);
+  }
+
+  20%,
+  40%,
+  60% {
+    transform: translateY(8px);
+  }
+
+  80% {
+    transform: translateY(6.4px);
+  }
+
+  90% {
+    transform: translateY(-6.4px);
+  }
+}
+
+
+#f1{
+    margin-left: 6%;
+    margin-right:5%
+}
+
+
+/* [ Mensaje de error cuando los campos estan mal escritos ] */
+
+#er{
+    animation: AtentionAnim 2s ease 0s infinite normal forwards;
+    margin-left: 43%; 
+}
+
+@keyframes AtentionAnim {
+  0% {
+    animation-timing-function: ease-out;
+    transform: scale(1);
+    transform-origin: center center;
+  }
+
+  10% {
+    animation-timing-function: ease-in;
+    transform: scale(0.91);
+  }
+
+  17% {
+    animation-timing-function: ease-out;
+    transform: scale(0.98);
+  }
+
+  33% {
+    animation-timing-function: ease-in;
+    transform: scale(0.87);
+  }
+
+  45%{
+    animation-timing-function: ease-out;
+    transform: scale(1);
+  }
+}
+
+
+#notificacion{
+  animation: okAnim 2s ease 0s infinite normal forwards;
+}
+
+@keyframes okAnim {
+  0% {
+    animation-timing-function: ease-out;
+    transform: scale(1);
+    transform-origin: center center;
+  }
+
+  10% {
+    animation-timing-function: ease-in;
+    transform: scale(0.91);
+  }
+
+  17% {
+    animation-timing-function: ease-out;
+    transform: scale(0.98);
+  }
+
+  33% {
+    animation-timing-function: ease-in;
+    transform: scale(0.87);
+  }
+
+  45% {
+    animation-timing-function: ease-out;
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html> 
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+   
+    <head th:replace="layout/header :: head">
+        <title>Home: Libreria Spring Boot</title>
+    </head>
+
+    <!-- Esto es una crotada, pero porque me toma el css a medias??? por ej el body no lo toma lo demas si -->
+    <body style="color: rgb(233, 236, 240);background-color:rgb(44, 46, 49);margin: 4%;">
+
+        <header th:replace="layout/header :: navbar"></header>
+        <div align="center">
+            <h1>Acaba de pasar algo y no sabemos que fue¯\_(ツ)_/¯</h1>
+            <h2><strong>Error 404</strong> </h2>
+            <br>
+        </div>
+    </body>
+</html>

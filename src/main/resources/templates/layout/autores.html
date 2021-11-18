@@ -1,0 +1,44 @@
+<html xmlns:th="http://www.thymeleaf.org">
+   
+    <body>
+        <section th:fragment="Autores" >
+            <div th:if="${ autores != null and !autores.empty }">
+                <h2 align="center" style="margin-left:3%;"><img src="https://i.imgur.com/U74FzM6.png" style="width:100px;height:80px;margin-left: -10%;" > Autores </h2 >
+                <br>      
+    
+                <table class="table table-dark table-hover" cellspacing = "2" cellpadding = "2" align="center" style="color: rgb(233, 236, 240);">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</h>                        
+                        <th scope="col">Estado</h>                                             
+                        <th scope="col">Editar</h>                                                                                       
+                        <th scope="col">Eliminar</h>                                                                                       
+                    </tr>
+                    
+                    <tr th:each="autor : ${autores}">
+                        <td th:text="${autor.idautor}" width = "10"> Mostrar id</td>
+                        <td th:text="${autor.nombre_autor}" width = "420">Mostrar Nombre</td>
+                        <td width = "40"><a th:href="@{/estadoautor/} + ${autor.idautor} ">
+                            <span th:if="${autor.alta_autor == true}">
+                                <button type="button" class="btn btn-outline-danger btn-sm">Dar de baja</button>
+                            </span>
+                            <span th:unless="${autor.alta_autor}">
+                                <button type="button" class="btn btn-outline-success btn-sm">Dar de alta</button>
+                            </span>                       
+                            </a>
+                        </td>  
+                        <td width = "40"><a th:href="@{/editarautor/} + ${autor.idautor}"><button type="button" class="btn btn-outline-success btn-sm">Editar</button></a></td>
+                        <td width = "60"><a th:href="@{/eliminarautor/} + ${autor.idautor}"><button type="button" class="btn btn-outline-danger btn-sm">Eliminar</button></a></td>
+                    </tr>
+                </table>            
+            </div>
+    
+            <!-- Agregar autor  -->
+            <div align="right">
+                <a th:href="@{/agregarautor}" > <button type="button" class="btn btn-success btn-lg" id="agregarbutton" style="width: 230px;"><span class="fas fa-plus-square" ></span> Agregar Autor</button></a>
+            </div>
+            <br>
+
+        </section>
+    </body>
+</html>

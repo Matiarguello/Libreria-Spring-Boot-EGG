@@ -1,0 +1,19 @@
+<!DOCTYPE html> 
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+   
+
+    <head th:replace="layout/header :: head">
+        <title>Home: Libreria Spring Boot</title>
+    </head>
+
+    <body > 
+        <header th:replace="layout/header :: navbar"></header>
+        <section th:replace="layout/msjs :: Mensajes"></section>
+        <section th:replace="layout/libros :: Libros"></section>
+        <section th:replace="layout/autores :: Autores"></section>
+        <section th:replace="layout/editoriales :: Editoriales"></section>
+        <section th:replace="layout/busqueda :: BusquedaService"></section>
+    </body>
+
+<html>
