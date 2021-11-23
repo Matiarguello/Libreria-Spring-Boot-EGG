@@ -23,6 +23,7 @@
 2. Ejecutar Libreria-MySQL-Estructura.sql desde el workbench para generar la base de datos "libreriamat" junto con todas las tablas y columnas.
 3. Agregar el proyecto a netbeans y ejecutar
 4. Ingresar a http://localhost:8080/
+5. En caso de solicitar un usuario y contraseña, ambos son: root 
 
 ## Futuras caracteristicas
 
